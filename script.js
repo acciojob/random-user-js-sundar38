@@ -1,23 +1,39 @@
-let agevalue=document.getElementById("age")
-let mailvalue=document.getElementById("email")
-let phonevalue=document.getElementById("phone")
+
+let userfullname=document.getElementById("fullname")
+let photo=document.getElementById("displayphoto")
 let printvalue=document.getElementById("additionalinfo")
-
+let loadnewuser=document.getElementById("getUser")
+    
+loadnewuser.addEventListener("click", ()=>{
 fetch("https://randomuser.me/api/")
-.then(data=> data.json())
-.then(data=> buttonsprint(data.results[0]))
+.then(response=> response.json())
+.then(data=> {
+    let userdetails=data.results[0];
+    console.log(userdetails);
+    photo.src=userdetails.picture.large
+    userfullname.innerHTML=userdetails.name.first+" "+userdetails.name.last;
+    //console.log(userdetails.name.first);
+    //console.log(userfullname.dataset.name);
+    printvalue.dataset.age=userdetails.dob.age
+    printvalue.dataset.email=userdetails.email
+    printvalue.dataset.phone=userdetails.phone   
+    
+});
+});   
 
-function buttonsprint(data){
-    console.log(data);
-    agevalue.addEventListener("click", ()=>{
-        let printage=`
-        <div>
-    
-       ${data.dob.age}
-        </div>
-        `
-        printvalue.innerHTML=printage
-    })
-    
-}
+let printage=document.querySelector('[data-attr="age"]')
+let printemail=document.querySelector('[data-attr="email"]')
+let printphoneno=document.querySelector('[data-attr="phone"]')
+
+printage.addEventListener("click", ()=>
+    printvalue.innerHTML=printvalue.dataset.age
+)
+
+printemail.addEventListener("click", ()=>
+    printvalue.innerHTML=printvalue.dataset.email
+)
+
+printphoneno.addEventListener("click", ()=>
+    printvalue.innerHTML=printvalue.dataset.phone
+)
 
