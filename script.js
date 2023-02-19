@@ -37,4 +37,4 @@ printemail.addEventListener("click", ()=>
 printphoneno.addEventListener("click", ()=>
     printvalue.innerHTML=printvalue.dataset.phone
 )
-
+loadnewuser.click()
