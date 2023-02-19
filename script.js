@@ -1,7 +1,7 @@
 
 let userfullname=document.getElementById("fullname")
 let photo=document.getElementById("displayphoto")
-let printvalue=document.getElementById("additionalinfo")
+let printvalue=document.getElementById("additional info")
 let loadnewuser=document.getElementById("getUser")
     
 loadnewuser.addEventListener("click", ()=>{
