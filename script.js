@@ -8,6 +8,7 @@ loadnewuser.addEventListener("click", ()=>{
 fetch("https://randomuser.me/api/")
 .then(response=> response.json())
 .then(data=> {
+	printvalue.innerHTML="";
     let userdetails=data.results[0];
     console.log(userdetails);
     photo.src=userdetails.picture.large
